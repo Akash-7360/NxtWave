@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NxtWave Placement Growth Strategy - 500 Job-Seeking Engineering Students</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* CSS VARIABLES FOR FLAWLESS THEME SWITCHING */
+    :root {
+      --bg-canvas: #090912;
+      --bg-card: #121222;
+      --bg-card-inner: #0b0b16;
+      --text-title: #ffffff;
+      --text-body: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-color: #2b2b42;
+      --shadow-color: #000000;
+      --accent-acid: #ccff00;
+      --accent-cyan: #00f0ff;
+      --accent-coral: #ff0055;
+      --accent-purple: #a855f7;
+      --tag-bg: #1c1c30;
+      --tag-border: #3b3b5c;
+      --nav-bg: rgba(9, 9, 18, 0.9);
+      --btn-bg: #ccff00;
+      --btn-text: #000000;
+      --grid-line: rgba(255, 255, 255, 0.035);
+    }
+
+    /* 100% HIGH CONTRAST & LEGIBLE LIGHT THEME */
+    body.light-theme {
+      --bg-canvas: #fcf9f2;
+      --bg-card: #ffffff;
+      --bg-card-inner: #f5f2e9;
+      --text-title: #09090b;
+      --text-body: #18181b;
+      --text-muted: #52525b;
+      --border-color: #000000;
+      --shadow-color: #000000;
+      --accent-acid: #16a34a;
+      --accent-cyan: #2563eb;
+      --accent-coral: #e11d48;
+      --accent-purple: #7c3aed;
+      --tag-bg: #eee9dc;
+      --tag-border: #000000;
+      --nav-bg: rgba(252, 249, 242, 0.95);
+      --btn-bg: #ffea00;
+      --btn-text: #000000;
+      --grid-line: rgba(0, 0, 0, 0.04);
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-body);
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-image: 
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: 32px 32px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .slide {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      padding: 6rem 5rem 3rem 5rem;
+      box-sizing: border-box;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .slide.active {
+      display: flex;
+    }
+
+    .neo-card {
+      background-color: var(--bg-card);
+      border: 2px solid var(--border-color);
+      box-shadow: 4px 4px 0px var(--shadow-color);
+      border-radius: 1.25rem;
+    }
+
+    .neo-card-inner {
+      background-color: var(--bg-card-inner);
+      border: 1.5px solid var(--border-color);
+      border-radius: 0.75rem;
+    }
+
+    .pill-tag {
+      background-color: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--text-title);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      border-radius: 9999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 700;
+    }
+
+    .theme-title { color: var(--text-title) !important; }
+    .theme-body { color: var(--text-body) !important; }
+    .theme-muted { color: var(--text-muted) !important; }
+
+    @media print {
+      body {
+        overflow: visible;
+        background: #ffffff !important;
+        color: #000000 !important;
+        -webkit-print-color-adjust: exact;
+      }
+      .slide {
+        display: flex !important;
+        page-break-after: always;
+        height: 100vh;
+        width: 100vw;
+        padding: 3rem !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-yellow-300 selection:text-black">
+
+  <!-- TOP DECK CONTROL BAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-3.5 backdrop-blur-md border-b-2" style="background-color: var(--nav-bg); border-color: var(--border-color);">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg flex items-center justify-center font-black font-mono text-sm border-2 border-black" style="background-color: var(--btn-bg); color: var(--btn-text);">
+        NW
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-mono font-bold tracking-wider uppercase theme-title">Placement & Career Strategy Edition</span>
+          <span class="pill-tag text-[10px] py-0 px-2">₹8-24 LPA TRACK</span>
+        </div>
+        <h1 class="text-xs font-bold theme-muted">NxtWave AI Workshop: Placement Domination Campaign</h1>
+      </div>
+    </div>
+    
+    <div class="flex items-center gap-3 no-print">
+      <!-- Theme Switcher -->
+      <button onclick="toggleDeckTheme()" class="text-xs font-mono font-bold neo-card px-3 py-1.5 transition flex items-center gap-1.5 theme-title">
+        <span id="themeIcon">☀️</span>
+        <span id="themeLabel">Light Mode</span>
+      </button>
+
+      <div class="text-xs font-mono theme-title neo-card px-3 py-1.5">
+        Slide <span id="currentSlideNum" class="font-bold" style="color: var(--accent-acid)">1</span> / 5
+      </div>
+
+      <button onclick="window.print()" class="text-xs font-mono font-bold neo-card px-3 py-1.5 transition theme-title">
+        Export PDF
+      </button>
+
+      <div class="flex items-center gap-1">
+        <button onclick="prevSlide()" class="p-2 rounded-xl neo-card theme-title transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button onclick="nextSlide()" class="p-2 rounded-xl font-bold transition border-2 border-black" style="background-color: var(--btn-bg); color: var(--btn-text);">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SLIDE 1: Persona & The 2026 IT Hiring Freeze -->
+  <section class="slide active" id="slide-1">
+    <div class="max-w-5xl mx-auto w-full">
+      <span class="pill-tag uppercase">SLIDE 01 // AUDIENCE & 2026 PLACEMENT CRISIS</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight theme-title mt-2">The Unplaced Undergrad: Beating the Hiring Freeze</h2>
+      <p class="text-sm theme-muted mt-1 max-w-2xl">Why traditional webinar ads fail, and why engineering students will register immediately to save their campus placement prospects.</p>
+    </div>
+
+    <div class="max-w-5xl mx-auto w-full grid grid-cols-3 gap-6 my-auto">
+      <div class="neo-card p-6 flex flex-col justify-between">
+        <div>
+          <span class="text-[11px] font-mono theme-muted block mb-1 uppercase">01 / WHO THEY ARE</span>
+          <h3 class="text-lg font-bold theme-title">The Job-Hunting Undergrad</h3>
+          <p class="text-xs theme-body mt-2 leading-relaxed">
+            Final-year (7th/8th Sem) unplaced students + 6th Sem pre-final students in Tier-2/3 colleges (JNTU, Anna Univ, AKTU, VTU) applying to 50+ off-campus drives with 0 interview callbacks.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t text-[11px] font-mono theme-muted" style="border-color: var(--border-color);">
+          Context: Mass recruiter hiring down 50%; fierce competition.
+        </div>
+      </div>
+
+      <div class="neo-card p-6 flex flex-col justify-between">
+        <div>
+          <span class="text-[11px] font-mono theme-muted block mb-1 uppercase">02 / THE ATS RESUME WALL</span>
+          <h3 class="text-lg font-bold theme-title">The 0-Shortlist Dilemma</h3>
+          <p class="text-xs theme-body mt-2 leading-relaxed">
+            Automated ATS parsers discard 85% of fresher resumes lacking practical GenAI keywords. Recruiters ignore static GitHub repos; they want working public URLs they can test live.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t text-[11px] font-mono theme-muted" style="border-color: var(--border-color);">
+          Core pain: Graduating unplaced or stuck with ₹3.5 LPA mass roles.
+        </div>
+      </div>
+
+      <div class="neo-card p-6 flex flex-col justify-between" style="border-color: var(--accent-acid);">
+        <div>
+          <span class="text-[11px] font-mono block mb-1 uppercase font-bold" style="color: var(--accent-acid)">03 / THE WINNING ANGLE</span>
+          <h3 class="text-lg font-bold theme-title">The ₹8 - ₹24 LPA Weapon</h3>
+          <p class="text-xs theme-body mt-2 leading-relaxed">
+            Positioned as a career weapon:  
+            <strong class="block mt-1 theme-title font-bold">"Deploy a Live Industry AI Project in 60 Mins + Get ATS-Optimized Bullet Points & Top 100 AI Interview Q&As."</strong>
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t text-[11px] font-mono font-bold" style="border-color: var(--border-color); color: var(--accent-acid);">
+          Direct shortlist leverage • Instant recruiter proof
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto w-full flex items-center justify-between border-t-2 pt-3 text-xs font-mono theme-muted" style="border-color: var(--border-color);">
+      <span>NxtWave Placement Growth Strategy — Round 1</span>
+      <span class="theme-title font-bold">Budget: ₹2,000 | 7-Day Sprint | 500 Verified Registrations</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: Channel Strategy & Allocation -->
+  <section class="slide" id="slide-2">
+    <div class="max-w-5xl mx-auto w-full">
+      <span class="pill-tag uppercase">SLIDE 02 // PLACEMENT CHANNELS & CAPITAL ALLOCATION</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight theme-title mt-2">The 3 Placement Channels (Zero Ad Waste)</h2>
+      <p class="text-sm theme-muted mt-1 max-w-2xl">Reallocating 100% of the ₹2,000 budget into student placement coordinator networks and job hunt communities.</p>
+    </div>
+
+    <div class="max-w-5xl mx-auto w-full grid grid-cols-3 gap-6 my-auto">
+      <div class="neo-card p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-[11px] font-mono theme-muted uppercase">PRIMARY ENGINE (53%)</span>
+            <span class="text-xs font-mono font-bold theme-title">₹1,200</span>
+          </div>
+          <h3 class="text-base font-bold theme-title">Student Placement Coordinators (SPCs)</h3>
+          <p class="text-xs theme-body mt-2 leading-relaxed">
+            Recruit 8 active college SPCs & Training and Placement (T&P) student heads. Offer ₹150 UPI bounty for 35+ verified class registrations via their dedicated tracking link.
+          </p>
+        </div>
+        <div class="mt-4 neo-card-inner p-3 text-xs font-mono">
+          <div class="flex justify-between theme-body">
+            <span>Projected:</span>
+            <span class="font-bold theme-title">280 Regs (53%)</span>
+          </div>
+          <div class="text-[10px] theme-muted mt-0.5">T&P WhatsApp broadcast = 98% open rate</div>
+        </div>
+      </div>
+
+      <div class="neo-card p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-[11px] font-mono theme-muted uppercase">VIRAL GATE (30%)</span>
+            <span class="text-xs font-mono font-bold theme-title">₹500</span>
+          </div>
+          <h3 class="text-base font-bold theme-title">"Placement Survival Kit" Referral Gate</h3>
+          <p class="text-xs theme-body mt-2 leading-relaxed">
+            Gamified gate: "Invite 3 unplaced batchmates to unlock the Top 100 AI Placement Interview Q&As (Google/Microsoft/Swiggy) + 2026 Off-Campus Drive Tracker".
+          </p>
+        </div>
+        <div class="mt-4 neo-card-inner p-3 text-xs font-mono">
+          <div class="flex justify-between theme-body">
+            <span>Projected:</span>
+            <span class="font-bold theme-title">160 Regs (30%)</span>
+          </div>
+          <div class="text-[10px] theme-muted mt-0.5">₹500 Amazon Voucher for top referrer</div>
+        </div>
+      </div>
+
+      <div class="neo-card p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-[11px] font-mono theme-muted uppercase">COMMUNITY (17%)</span>
+            <span class="text-xs font-mono font-bold theme-title">₹300</span>
+          </div>
+          <h3 class="text-base font-bold theme-title">Off-Campus Drive & Prep Channels</h3>
+          <p class="text-xs theme-body mt-2 leading-relaxed">
+            Partner with 6 regional Telegram/WhatsApp job preparation channels (e.g. Bangalore Fresher Tech, Tier-3 Placement Warriors) with branded salary benchmark graphics.
+          </p>
+        </div>
+        <div class="mt-4 neo-card-inner p-3 text-xs font-mono">
+          <div class="flex justify-between theme-body">
+            <span>Projected:</span>
+            <span class="font-bold theme-title">90 Regs (17%)</span>
+          </div>
+          <div class="text-[10px] theme-muted mt-0.5">Highly motivated active job-seekers</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto w-full flex items-center justify-between border-t-2 pt-3 text-xs font-mono theme-muted" style="border-color: var(--border-color);">
+      <span>Unit Economics: ₹2,000 Total Spend / 530 Projected Registrations</span>
+      <span class="theme-title font-bold">Effective CAC = ₹3.77 Per Candidate</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: 7-Day Rollout & Funnel Math -->
+  <section class="slide" id="slide-3">
+    <div class="max-w-5xl mx-auto w-full">
+      <span class="pill-tag uppercase">SLIDE 03 // ROLLOUT SPRINT & CONVERSION MATH</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight theme-title mt-2">7-Day Sprint Cadence & Placement Funnel</h2>
+      <p class="text-sm theme-muted mt-1 max-w-2xl">A high-velocity day-by-day plan engineered to secure 530 verified engineering job seekers.</p>
+    </div>
+
+    <div class="max-w-5xl mx-auto w-full grid grid-cols-12 gap-6 my-auto">
+      <div class="col-span-7 neo-card p-5 space-y-1.5 text-xs font-mono">
+        <div class="text-[11px] font-bold theme-title mb-2">7-DAY CADENCE</div>
+        <div class="flex justify-between p-2 rounded neo-card-inner">
+          <span class="font-bold theme-title w-10">D-7</span>
+          <span class="flex-1 px-2 theme-body">Deploy Placement Asset & recruit 8 college SPCs</span>
+          <span class="theme-muted">30 regs</span>
+        </div>
+        <div class="flex justify-between p-2 rounded neo-card-inner">
+          <span class="font-bold theme-title w-10">D-6</span>
+          <span class="flex-1 px-2 theme-body">Official T&P WhatsApp broadcast (8:30 PM prime time)</span>
+          <span class="theme-muted">120 regs</span>
+        </div>
+        <div class="flex justify-between p-2 rounded neo-card-inner">
+          <span class="font-bold theme-title w-10">D-5</span>
+          <span class="flex-1 px-2 theme-body">Students share link to unlock Top 100 AI Interview Q&As</span>
+          <span class="theme-muted">230 regs</span>
+        </div>
+        <div class="flex justify-between p-2 rounded neo-card-inner">
+          <span class="font-bold theme-title w-10">D-4</span>
+          <span class="flex-1 px-2 theme-body">Blast across 6 regional Telegram fresher hiring channels</span>
+          <span class="theme-muted">320 regs</span>
+        </div>
+        <div class="flex justify-between p-2 rounded neo-card-inner">
+          <span class="font-bold theme-title w-10">D-3</span>
+          <span class="flex-1 px-2 theme-body">SPC Follow-Up: "110 Seats Left for Placement Batch"</span>
+          <span class="theme-muted">425 regs</span>
+        </div>
+        <div class="flex justify-between p-2 rounded neo-card-inner">
+          <span class="font-bold theme-title w-10">D-2</span>
+          <span class="flex-1 px-2 theme-body">Announce Top Referrer standings; Amazon voucher crunch</span>
+          <span class="theme-muted">490 regs</span>
+        </div>
+        <div class="flex justify-between p-2 rounded neo-card-inner border-2" style="border-color: var(--accent-acid);">
+          <span class="font-bold theme-title w-10">D-1</span>
+          <span class="flex-1 px-2 theme-title font-bold">Pre-workshop setup checklist & admit pass confirmation</span>
+          <span class="font-bold theme-title">530+ regs</span>
+        </div>
+      </div>
+
+      <!-- Funnel -->
+      <div class="col-span-5 neo-card p-5 flex flex-col justify-between font-mono text-xs">
+        <div>
+          <div class="text-[11px] font-bold theme-title mb-3">PLACEMENT ACQUISITION WATERFALL</div>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between theme-muted mb-1">
+                <span>Job-Seeking Student Reach</span>
+                <span class="theme-title font-bold">5,000 (100%)</span>
+              </div>
+              <div class="w-full h-2 rounded-full overflow-hidden neo-card-inner">
+                <div class="bg-slate-500 h-full w-full"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between theme-muted mb-1">
+                <span>Placement Asset Visitors (CTR: 20%)</span>
+                <span class="theme-title font-bold">1,000 (20%)</span>
+              </div>
+              <div class="w-full h-2 rounded-full overflow-hidden neo-card-inner">
+                <div class="bg-blue-500 h-full w-[45%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between theme-muted mb-1">
+                <span>Direct Signups (SPC + Telegram)</span>
+                <span class="theme-title font-bold">370 (37% CR)</span>
+              </div>
+              <div class="w-full h-2 rounded-full overflow-hidden neo-card-inner">
+                <div class="bg-purple-500 h-full w-[28%]"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between theme-muted mb-1">
+                <span>Viral Signups (K = 0.57)</span>
+                <span class="theme-title font-bold">+160 Viral</span>
+              </div>
+              <div class="w-full h-2 rounded-full overflow-hidden neo-card-inner">
+                <div class="bg-emerald-400 h-full w-[38%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t" style="border-color: var(--border-color);">
+          <div class="flex justify-between theme-title font-bold mb-1">
+            <span>Total Confirmed Candidates</span>
+            <span>530 Registrations</span>
+          </div>
+          <div class="flex justify-between theme-muted text-[11px]">
+            <span>Est. Live Attendance (68%):</span>
+            <span class="theme-title font-bold">~360 Live Attendees</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto w-full flex items-center justify-between border-t-2 pt-3 text-xs font-mono theme-muted" style="border-color: var(--border-color);">
+      <span>Target: 500 Verified Registrations</span>
+      <span class="theme-title font-bold">Expected Output: 530 Verified Candidates</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: Working Asset Architecture -->
+  <section class="slide" id="slide-4">
+    <div class="max-w-5xl mx-auto w-full">
+      <span class="pill-tag uppercase">SLIDE 04 // THE WORKING ASSET (PLACEMENT EDITION)</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight theme-title mt-2">The Placement Portfolio & Shortlist Engine</h2>
+      <p class="text-sm theme-muted mt-1 max-w-2xl">Built specifically to convert job-seeking engineering students into live workshop builders.</p>
+    </div>
+
+    <div class="max-w-5xl mx-auto w-full grid grid-cols-3 gap-6 my-auto font-mono">
+      <div class="neo-card p-6 flex flex-col justify-between">
+        <div>
+          <span class="pill-tag text-[10px] uppercase">TOOL 01</span>
+          <h3 class="text-base font-bold theme-title mt-3">ATS Resume & Salary Matcher</h3>
+          <p class="text-xs theme-body mt-2 leading-relaxed">
+            Students select target role (AI Engineer, Full-Stack AI, Data Science) and salary bracket (₹8-24 LPA) to receive instant 60-min project architectures and copyable ATS bullet points.
+          </p>
+        </div>
+        <div class="mt-4 text-[11px] theme-muted neo-card-inner p-2.5">
+          Outcome: Pre-qualifies job intent before registration.
+        </div>
+      </div>
+
+      <div class="neo-card p-6 flex flex-col justify-between">
+        <div>
+          <span class="pill-tag text-[10px] uppercase">TOOL 02</span>
+          <h3 class="text-base font-bold theme-title mt-3">Placement Salary & Shortlist Calculator</h3>
+          <p class="text-xs theme-body mt-2 leading-relaxed">
+            Interactive reality check calculating ATS shortlist chances from 18% to 98% with an instant "⚡ Boost to ₹18 LPA Profile" action.
+          </p>
+        </div>
+        <div class="mt-4 text-[11px] theme-muted neo-card-inner p-2.5">
+          Outcome: Creates urgent emotional buying intent.
+        </div>
+      </div>
+
+      <div class="neo-card p-6 flex flex-col justify-between">
+        <div>
+          <span class="pill-tag text-[10px] uppercase">TOOL 03</span>
+          <h3 class="text-base font-bold theme-title mt-3">Interview Q&A Viral Gate</h3>
+          <p class="text-xs theme-body mt-2 leading-relaxed">
+            Locks the Top 100 Technical Interview Q&As and 2026 Off-Campus Drive Tracker until 3 unplaced friends register via WhatsApp.
+          </p>
+        </div>
+        <div class="mt-4 text-[11px] theme-muted neo-card-inner p-2.5">
+          Outcome: Generates 160 viral compounding signups.
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto w-full flex items-center justify-between border-t-2 pt-3 text-xs font-mono theme-muted" style="border-color: var(--border-color);">
+      <span>Working Asset Location: /placement_growth_campaign/working_asset/index.html</span>
+      <span class="theme-title font-bold">Tested & Interactive</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: Strategic Judgment & Retention -->
+  <section class="slide" id="slide-5">
+    <div class="max-w-5xl mx-auto w-full">
+      <span class="pill-tag uppercase">SLIDE 05 // RETENTION & STRATEGIC JUDGMENT</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight theme-title mt-2">Attendance Engineering & Growth Judgment</h2>
+      <p class="text-sm theme-muted mt-1 max-w-2xl">Turning 500 registrations into high-intent active attendees and prospective NxtWave program learners.</p>
+    </div>
+
+    <div class="max-w-5xl mx-auto w-full grid grid-cols-2 gap-6 my-auto font-mono">
+      <div class="neo-card p-6 space-y-3">
+        <h3 class="text-sm font-bold theme-title">The 3-Touch WhatsApp Placement Sequence</h3>
+        <div class="space-y-2 text-xs theme-body">
+          <div class="neo-card-inner p-3">
+            <span class="font-bold block mb-0.5 theme-title">Touch 1: Fast-Track Pass Generated</span>
+            <span>Delivers digital Admit Card with verified Seat ID + 1-tap Google Calendar add.</span>
+          </div>
+          <div class="neo-card-inner p-3">
+            <span class="font-bold block mb-0.5 theme-title">Touch 2 (D-1): 30-Second API Key Setup</span>
+            <span>Upfront micro-task to create free Google AI Studio key, ensuring zero technical friction during the live build.</span>
+          </div>
+          <div class="neo-card-inner p-3">
+            <span class="font-bold block mb-0.5 theme-title">Touch 3 (T-45 mins): Live Room Doors Open</span>
+            <span>"Doors open! The 2026 Off-Campus AI Hiring Directory will be shared exclusively during the first 10 minutes."</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="neo-card p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-bold theme-title mb-3">Deliberate AI Rejections</h3>
+          <div class="space-y-2.5 text-xs theme-body">
+            <div class="neo-card-inner p-3">
+              <strong class="text-red-500 block mb-0.5">1. Rejected Generic "Placement Webinar" Title:</strong>
+              AI suggested "How to Get a Job in Tech". Rejected because generic career webinars have <15% show-up rates. Promising a live deployed AI project on their URL makes it actionable.
+            </div>
+            <div class="neo-card-inner p-3">
+              <strong class="text-amber-500 block mb-0.5">2. Rejected Paid LinkedIn Lead Gen Ads:</strong>
+              AI suggested LinkedIn sponsored forms. At ₹300-₹500 CPL on LinkedIn, ₹2,000 yields barely 4 leads. College SPCs deliver 280 leads for ₹1,200.
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t text-xs theme-muted flex items-center justify-between" style="border-color: var(--border-color);">
+          <span>Expected Live Attendees: <strong class="theme-title">360 Students</strong></span>
+          <span class="theme-title font-bold">Ready to Ship 🚀</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto w-full flex items-center justify-between border-t-2 pt-3 text-xs font-mono theme-muted" style="border-color: var(--border-color);">
+      <span>NxtWave Growth Intern Submission — Ready for Round 1 Evaluation</span>
+      <span class="theme-title font-bold">Next Step: Final Growth Interview</span>
+    </div>
+  </section>
+
+  <!-- SCRIPT -->
+  <script>
+    let isLightDeck = false;
+
+    function toggleDeckTheme() {
+      isLightDeck = !isLightDeck;
+      document.body.classList.toggle('light-theme', isLightDeck);
+      const icon = document.getElementById('themeIcon');
+      const label = document.getElementById('themeLabel');
+      if (isLightDeck) {
+        icon.innerText = '🌙';
+        label.innerText = 'Dark Mode';
+      } else {
+        icon.innerText = '☀️';
+        label.innerText = 'Light Mode';
+      }
+    }
+
+    let currentSlide = 1;
+    const totalSlides = 5;
+
+    function showSlide(n) {
+      document.querySelectorAll('.slide').forEach((s, idx) => {
+        s.classList.toggle('active', idx === n - 1);
+      });
+      document.getElementById('currentSlideNum').innerText = n;
+      currentSlide = n;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      } else if (e.key.toLowerCase() === 't') {
+        toggleDeckTheme();
+      }
+    });
+  </script>
+</body>
+</html>
+

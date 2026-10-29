@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚡ NxtWave AI Placement Sprint: Build Your AI Project in 60 Mins & Land ₹8-24 LPA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* CSS VARIABLES FOR FLAWLESS THEME SWITCHING */
+    :root {
+      --bg-canvas: #090912;
+      --bg-card: #121222;
+      --bg-card-inner: #0b0b16;
+      --bg-input: #0e0e1a;
+      --text-title: #ffffff;
+      --text-body: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-color: #2b2b42;
+      --shadow-color: #000000;
+      --accent-acid: #ccff00;
+      --accent-cyan: #00f0ff;
+      --accent-coral: #ff0055;
+      --accent-purple: #a855f7;
+      --tag-bg: #1c1c30;
+      --tag-border: #3b3b5c;
+      --nav-bg: rgba(9, 9, 18, 0.88);
+      --ticker-bg: #ccff00;
+      --ticker-text: #000000;
+      --btn-primary-bg: #ccff00;
+      --btn-primary-text: #000000;
+      --pass-bg: #0e0e1c;
+      --pass-border: #383854;
+      --grid-line: rgba(255, 255, 255, 0.035);
+    }
+
+    /* 100% HIGH CONTRAST & LEGIBLE LIGHT THEME */
+    body.light-theme {
+      --bg-canvas: #fcf9f2;
+      --bg-card: #ffffff;
+      --bg-card-inner: #f5f2e9;
+      --bg-input: #ffffff;
+      --text-title: #09090b;
+      --text-body: #18181b;
+      --text-muted: #52525b;
+      --border-color: #000000;
+      --shadow-color: #000000;
+      --accent-acid: #16a34a;
+      --accent-cyan: #2563eb;
+      --accent-coral: #e11d48;
+      --accent-purple: #7c3aed;
+      --tag-bg: #eee9dc;
+      --tag-border: #000000;
+      --nav-bg: rgba(252, 249, 242, 0.94);
+      --ticker-bg: #ffea00;
+      --ticker-text: #000000;
+      --btn-primary-bg: #ffea00;
+      --btn-primary-text: #000000;
+      --pass-bg: #ffffff;
+      --pass-border: #000000;
+      --grid-line: rgba(0, 0, 0, 0.04);
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-body);
+      background-image: 
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: 32px 32px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .neo-card {
+      background-color: var(--bg-card);
+      border: 2px solid var(--border-color);
+      box-shadow: 4px 4px 0px var(--shadow-color);
+      border-radius: 1.25rem;
+    }
+
+    .neo-card-inner {
+      background-color: var(--bg-card-inner);
+      border: 1.5px solid var(--border-color);
+      border-radius: 0.75rem;
+    }
+
+    .neo-input {
+      background-color: var(--bg-input);
+      color: var(--text-title);
+      border: 2px solid var(--border-color);
+      border-radius: 0.75rem;
+    }
+    .neo-input:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+    }
+
+    .neo-btn {
+      background-color: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-weight: 800;
+      border: 2px solid #000000;
+      box-shadow: 3px 3px 0px var(--shadow-color);
+      transition: all 0.15s ease;
+    }
+    .neo-btn:hover {
+      transform: translate(-1.5px, -1.5px);
+      box-shadow: 5px 5px 0px var(--shadow-color);
+    }
+
+    .pill-tag {
+      background-color: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--text-title);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      border-radius: 9999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 700;
+    }
+
+    .theme-title { color: var(--text-title) !important; }
+    .theme-body { color: var(--text-body) !important; }
+    .theme-muted { color: var(--text-muted) !important; }
+
+    #confettiCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body class="selection:bg-yellow-300 selection:text-black min-h-screen">
+
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- QUICK FLOATING BAR -->
+  <div class="fixed bottom-5 right-5 z-50 flex items-center gap-2 bg-[#121222] border-2 border-slate-700 p-2 rounded-2xl shadow-2xl backdrop-blur-md">
+    <button onclick="toggleTheme()" id="themeBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono font-bold text-slate-200 transition">
+      <span id="themeIcon">☀️</span>
+      <span id="themeLabel">Light</span>
+    </button>
+    <button onclick="toggleAudio()" id="soundToggleBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono font-bold text-slate-200 transition">
+      <span id="soundIcon">🔊</span>
+      <span id="soundLabel">Audio</span>
+    </button>
+    <a href="#register" class="neo-btn text-xs px-3.5 py-1.5 rounded-xl flex items-center gap-1">
+      <span>Get Pass</span>
+      <span>⚡</span>
+    </a>
+  </div>
+
+  <!-- TICKER TOP BAR -->
+  <div class="py-2 px-4 font-mono font-extrabold text-xs tracking-wider border-b-2 border-black flex items-center justify-between overflow-hidden" style="background-color: var(--ticker-bg); color: var(--ticker-text);">
+    <div class="flex items-center gap-3 whitespace-nowrap animate-marquee">
+      <span class="bg-black text-white px-2 py-0.5 rounded text-[10px]">CAREER ACCELERATOR</span>
+      <span>💼 BEAT THE 2026 IT HIRING FREEZE</span>
+      <span>•</span>
+      <span>DEPLOY AN INDUSTRY-GRADE AI APP IN 60 MINS</span>
+      <span>•</span>
+      <span>TARGET: ₹8 LPA TO ₹24 LPA ROLES</span>
+      <span>•</span>
+      <span>TOP 100 AI TECHNICAL INTERVIEW Q&As INCLUDED</span>
+    </div>
+    <div class="hidden md:flex items-center gap-2 text-[11px] font-bold">
+      <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+      <span>DAY-1 PLACEMENT SPRINT</span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-40 backdrop-blur-md border-b-2 px-6 py-4" style="background-color: var(--nav-bg); border-color: var(--border-color);">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center font-black font-mono text-base border-2 border-black shadow" style="background-color: var(--btn-primary-bg); color: var(--btn-primary-text);">
+          NW
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-extrabold tracking-tight text-base theme-title">NxtWave <span style="color: var(--accent-cyan)">PLACEMENT ACCELERATOR</span></span>
+            <span class="pill-tag text-[10px] py-0 px-2 uppercase">Career Track</span>
+          </div>
+          <span class="text-[11px] font-mono theme-muted">Build Your AI Portfolio in 60 Minutes</span>
+        </div>
+      </div>
+
+      <div class="hidden md:flex items-center gap-6 text-xs font-mono font-bold theme-muted">
+        <a href="#ats-matcher" class="hover:underline">01 // ATS Resume Matcher</a>
+        <a href="#salary-calculator" class="hover:underline">02 // Salary Estimator</a>
+        <a href="#register" class="hover:underline">03 // Claim Seat</a>
+        <a href="#referral-zone" class="hover:underline">04 // Interview Q&A Gate</a>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <!-- Vibe Switcher: Unplaced Panic vs Placement Chad -->
+        <button onclick="toggleVibeMode()" id="vibeToggleBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border-2 border-purple-500/60 bg-purple-950/30 text-purple-300 hover:text-white text-xs font-mono font-bold transition">
+          <span id="vibeEmoji">🚨</span>
+          <span id="vibeText">Mode: 0 Shortlists Panic</span>
+        </button>
+
+        <button onclick="toggleTheme()" class="p-2 rounded-xl border-2 hover:opacity-80 text-xs transition" title="Toggle Theme" style="border-color: var(--border-color);">
+          <span id="navThemeIcon">☀️</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="pt-14 pb-16 px-6 max-w-4xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 p-1 px-4 rounded-full border-2 text-xs font-mono mb-6 shadow-sm" style="background-color: var(--bg-card); border-color: var(--border-color);">
+      <span class="w-2 h-2 rounded-full animate-ping" style="background-color: var(--accent-coral);"></span>
+      <span class="theme-title font-bold" id="heroBadge">For Final-Year & Pre-Final Students Aiming for ₹8L - ₹24L Tech Offers</span>
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.12] theme-title">
+      <span id="heroHeadlineMain">From 0 Shortlists to Top 1% Candidate.</span><br/>
+      <span class="bg-gradient-to-r from-emerald-400 via-cyan-400 to-purple-500 bg-clip-text text-transparent" id="heroHeadlineGradient">
+        Build a Live AI App in 60 Mins.
+      </span>
+    </h1>
+
+    <p class="mt-6 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed theme-body font-normal" id="heroSubtitle">
+      Mass recruiters slashed hiring and off-campus portals discard resumes without AI keywords. In 60 minutes, build, deploy, and showcase an industry-grade AI application with quantifiable ATS bullet points that tech recruiters can't ignore.
+    </p>
+
+    <!-- Key Placement Deliverables -->
+    <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 text-left font-mono text-xs">
+      <div class="p-3 neo-card-inner">
+        <span class="font-bold block mb-1" style="color: var(--accent-cyan)">01 / LIVE PROOF</span>
+        <span class="theme-body">Recruiters click working URL in interview</span>
+      </div>
+      <div class="p-3 neo-card-inner">
+        <span class="font-bold block mb-1" style="color: var(--accent-acid)">02 / ATS BULLETS</span>
+        <span class="theme-body">Quantified metrics for resume parsers</span>
+      </div>
+      <div class="p-3 neo-card-inner">
+        <span class="font-bold block mb-1" style="color: var(--accent-coral)">03 / 100 INTERVIEW Qs</span>
+        <span class="theme-body">GenAI & LLM system design questions</span>
+      </div>
+      <div class="p-3 neo-card-inner">
+        <span class="font-bold block mb-1" style="color: var(--accent-purple)">04 / VERIFIED</span>
+        <span class="theme-body">NxtWave AI Portfolio Credential</span>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#register" class="w-full sm:w-auto px-7 py-3.5 rounded-xl neo-btn text-sm flex items-center justify-center gap-2">
+        <span>Claim Free Placement Pass</span>
+        <span>⚡</span>
+      </a>
+      <a href="#ats-matcher" class="w-full sm:w-auto px-6 py-3.5 rounded-xl neo-card text-sm font-bold theme-title hover:opacity-80 transition">
+        Match AI Project to Target Salary ↓
+      </a>
+    </div>
+
+    <div class="mt-8 text-xs font-mono theme-muted">
+      🔥 <strong class="theme-title" id="liveSeatsCount">389</strong> of 500 placement seats reserved across 48 engineering colleges
+    </div>
+  </header>
+
+  <!-- SECTION 1: INTERACTIVE ATS RESUME & SALARY MATCHER -->
+  <section id="ats-matcher" class="py-12 px-6 max-w-5xl mx-auto">
+    <div class="neo-card p-6 sm:p-8">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b-2" style="border-color: var(--border-color);">
+        <div>
+          <span class="pill-tag uppercase">01 // ATS RESUME & SALARY MATCHER</span>
+          <h2 class="text-xl sm:text-2xl font-bold theme-title mt-2">Generate Your High-Package AI Project Portfolio</h2>
+          <p class="text-xs theme-muted mt-1">Select your dream tech role and target CTC to generate the exact project architecture recruiters want to see:</p>
+        </div>
+        <span class="pill-tag text-xs font-mono" style="color: var(--accent-cyan);">Placement Filter: Active</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
+        <div>
+          <label class="block text-xs font-mono font-bold theme-body mb-2 uppercase">Select Target Role</label>
+          <select id="roleSelect" onchange="updatePlacementMatch()" class="neo-input w-full px-4 py-2.5 text-sm font-mono">
+            <option value="ai-eng">AI Engineer / GenAI Developer (₹12 - ₹24 LPA)</option>
+            <option value="fullstack-ai">Full-Stack AI Application Engineer (₹10 - ₹18 LPA)</option>
+            <option value="data-sci">Data Scientist & LLM Evaluation Specialist (₹10 - ₹20 LPA)</option>
+            <option value="backend-ai">Backend AI Systems & Microservices (₹9 - ₹16 LPA)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono font-bold theme-body mb-2 uppercase">Target Company Tier</label>
+          <select id="tierSelect" onchange="updatePlacementMatch()" class="neo-input w-full px-4 py-2.5 text-sm font-mono">
+            <option value="product-startups">Tier-1 High Growth Startups (Swiggy, Razorpay, Zepto)</option>
+            <option value="product-tech">Global Tech GCCs & Enterprises (Microsoft, Target, Oracle)</option>
+            <option value="high-growth">Fast-Growing AI Tech Consultancies (₹8 - ₹14 LPA)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Generated Portfolio Blueprint -->
+      <div class="mt-6 neo-card-inner p-5 font-mono text-xs space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b pb-3" style="border-color: var(--border-color);">
+          <div>
+            <span class="theme-muted text-[10px] uppercase">RECOMMENDED 60-MIN PLACEMENT CAPSTONE</span>
+            <h3 id="roleTitle" class="text-base font-bold theme-title mt-0.5">Enterprise RAG Multi-Document Q&A Assistant with Streaming API</h3>
+          </div>
+          <span class="font-bold" style="color: var(--accent-acid)" id="roleSalary">Target Package: ₹14 - ₹22 LPA</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div class="p-3 neo-card border" style="border-color: var(--border-color);">
+            <span class="font-bold block mb-1" style="color: var(--accent-cyan)">Tech Stack (Recruiter Gold)</span>
+            <p id="roleStack" class="theme-body">FastAPI + LangChain + Gemini Flash + ChromaDB Vector Store + Docker Deploy</p>
+          </div>
+          <div class="p-3 neo-card border" style="border-color: var(--border-color);">
+            <span class="font-bold block mb-1" style="color: var(--accent-acid)">ATS Resume Bullet (Copy-Paste)</span>
+            <p id="roleResume" class="theme-body">"Architected semantic search RAG engine processing 500+ PDFs with sub-250ms vector similarity lookup and zero-shot hallucination guardrails."</p>
+          </div>
+          <div class="p-3 neo-card border" style="border-color: var(--border-color);">
+            <span class="font-bold block mb-1" style="color: var(--accent-coral)">Interview System Design Question</span>
+            <p id="roleInterview" class="theme-body">"How do you handle chunking overlap and token context window limits when scaling vector search to 50k documents?"</p>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t flex items-center justify-between" style="border-color: var(--border-color);">
+          <span class="theme-muted">You will build and deploy this exact project on your live URL during the 60 minutes.</span>
+          <a href="#register" class="font-bold underline" style="color: var(--accent-cyan)">Reserve your seat →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: PLACEMENT SALARY & SHORTLIST CALCULATOR -->
+  <section id="salary-calculator" class="py-12 px-6 max-w-5xl mx-auto">
+    <div class="neo-card p-6 sm:p-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b-2" style="border-color: var(--border-color);">
+        <div>
+          <span class="pill-tag uppercase">02 // PLACEMENT CHANCE ESTIMATOR</span>
+          <h2 class="text-xl sm:text-2xl font-bold theme-title mt-2">2026 Off-Campus Placement Shortlist Estimator</h2>
+          <p class="text-xs theme-muted mt-1">Estimate your ATS resume shortlist probability and starting salary based on your current resume profile.</p>
+        </div>
+        <span class="text-xs font-mono font-bold theme-muted">2026 IT Hiring Benchmark</span>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <!-- Sliders -->
+        <div class="md:col-span-7 space-y-5">
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-2">
+              <span class="theme-body">1. Projects currently listed on your resume:</span>
+              <span class="font-bold theme-title" id="sLabel1">Basic CRUD / E-commerce clone</span>
+            </div>
+            <input type="range" id="sSlider1" min="1" max="4" value="1" oninput="calcSalaryIndex()" class="w-full accent-yellow-400 cursor-pointer">
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-2">
+              <span class="theme-body">2. Deployed public URL proof (Can HR click and test?):</span>
+              <span class="font-bold theme-title" id="sLabel2">No live URL (GitHub repo only)</span>
+            </div>
+            <input type="range" id="sSlider2" min="1" max="4" value="1" oninput="calcSalaryIndex()" class="w-full accent-yellow-400 cursor-pointer">
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-2">
+              <span class="theme-body">3. GenAI / LLM API integration experience:</span>
+              <span class="font-bold theme-title" id="sLabel3">Zero practical experience</span>
+            </div>
+            <input type="range" id="sSlider3" min="1" max="4" value="1" oninput="calcSalaryIndex()" class="w-full accent-yellow-400 cursor-pointer">
+          </div>
+        </div>
+
+        <!-- Result Box -->
+        <div class="md:col-span-5 neo-card-inner p-6 text-center">
+          <span class="text-[11px] font-mono theme-muted uppercase block">ESTIMATED ATS SHORTLIST CHANCE</span>
+          <div class="text-5xl font-black font-mono my-2 text-red-500" id="sScoreVal">18%</div>
+          <div class="inline-block px-3 py-1 rounded-full text-xs font-mono font-bold my-1 bg-red-500/10 text-red-500 border border-red-500/20" id="sBadge">
+            🚨 HIGH REJECTION RISK: ATS DISCARD
+          </div>
+          <div class="text-xs font-mono theme-title font-bold mt-2" id="sSalaryText">
+            Est. Offer: ₹3.5 - ₹4.5 LPA (Mass Recruiter Tier)
+          </div>
+          <p class="text-[11px] theme-muted mt-1 leading-relaxed" id="sAdvice">
+            Without deployed modern AI projects, your resume gets filtered out by automated screening software before a recruiter ever sees it.
+          </p>
+          <button onclick="boostSalary()" class="mt-4 w-full neo-btn py-2.5 rounded-xl text-xs font-bold font-mono">
+            ⚡ Boost to ₹18 LPA Profile With 60-Min AI Sprint
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: 1-CLICK REGISTRATION & PLACEMENT PASS -->
+  <section id="register" class="py-14 px-6 max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+      <div class="md:col-span-7 neo-card p-6 sm:p-8">
+        <span class="pill-tag uppercase">03 // FREE PLACEMENT ADMISSION</span>
+        <h2 class="text-2xl font-black theme-title mt-2">Claim Your Placement Fast-Track Pass</h2>
+        <p class="text-xs theme-muted mt-1">Free admission for 2025/2026 engineering batches. Includes Admit Pass + WhatsApp reminders.</p>
+
+        <form id="regForm" onsubmit="handlePlacementReg(event)" class="mt-5 space-y-4 font-mono">
+          <div>
+            <label class="block text-xs font-bold theme-body mb-1">Your Full Name *</label>
+            <input type="text" id="regName" required placeholder="e.g. Akash Udayakumar" class="neo-input w-full px-4 py-2.5 text-sm">
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold theme-body mb-1">College *</label>
+              <input type="text" id="regCollege" required placeholder="e.g. JNTU Hyderabad" class="neo-input w-full px-4 py-2.5 text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-bold theme-body mb-1">Target Package *</label>
+              <select id="regPackage" class="neo-input w-full px-4 py-2.5 text-sm">
+                <option value="12-24">₹12 - ₹24 LPA (Tier-1 Startups)</option>
+                <option value="8-14">₹8 - ₹14 LPA (Growth Tech)</option>
+                <option value="6-10">₹6 - ₹10 LPA (Product IT)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold theme-body mb-1">WhatsApp Number (For Ticket & Project Code Link) *</label>
+            <div class="flex">
+              <span class="inline-flex items-center px-3 rounded-l-xl border-2 border-r-0 text-xs font-bold theme-title" style="background-color: var(--bg-card-inner); border-color: var(--border-color);">+91</span>
+              <input type="tel" id="regPhone" required pattern="[0-9]{10}" placeholder="9876543210" class="neo-input w-full rounded-r-xl rounded-l-none px-4 py-2.5 text-sm">
+            </div>
+            <p class="text-[10px] theme-muted mt-1">Admit Pass QR & pre-workshop starter repo link dispatched on WhatsApp.</p>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold theme-body mb-1">SPC / Placement Coordinator Code (Optional)</label>
+            <input type="text" id="regRefCode" placeholder="e.g. SPC-JNTU-2026" class="neo-input w-full px-4 py-2 text-xs">
+          </div>
+
+          <button type="submit" class="w-full neo-btn py-3.5 rounded-xl text-sm font-extrabold tracking-wider">
+            RESERVE PLACEMENT SEAT (₹0) ⚡
+          </button>
+        </form>
+      </div>
+
+      <!-- Placement Fast-Track Pass Preview -->
+      <div class="md:col-span-5">
+        <div id="passContainer" class="neo-card p-6 relative overflow-hidden" style="background-color: var(--pass-bg); border-color: var(--pass-border);">
+          <div class="flex items-center justify-between border-b pb-3" style="border-color: var(--border-color);">
+            <div class="flex items-center gap-2">
+              <div class="w-6 h-6 rounded flex items-center justify-center font-bold text-xs" style="background-color: var(--btn-primary-bg); color: var(--btn-primary-text);">NW</div>
+              <span class="text-xs font-mono font-bold theme-title uppercase">PLACEMENT FAST-TRACK PASS</span>
+            </div>
+            <span class="pill-tag text-[9px] py-0 px-2" style="color: var(--accent-acid);">CONFIRMED</span>
+          </div>
+
+          <div class="mt-4 space-y-3 font-mono">
+            <div>
+              <span class="text-[10px] theme-muted uppercase block">CANDIDATE</span>
+              <span id="passName" class="text-base font-bold theme-title">Akash Udayakumar</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div>
+                <span class="text-[10px] theme-muted uppercase block">INSTITUTE</span>
+                <span id="passCollege" class="theme-body font-medium">JNTU Hyderabad</span>
+              </div>
+              <div>
+                <span class="text-[10px] theme-muted uppercase block">CANDIDATE ID</span>
+                <span id="passId" class="font-bold theme-title">NW-CAREER-84920</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div>
+                <span class="text-[10px] theme-muted uppercase block">TARGET BRACKET</span>
+                <span class="theme-body font-bold" style="color: var(--accent-cyan)">₹12 - ₹24 LPA</span>
+              </div>
+              <div>
+                <span class="text-[10px] theme-muted uppercase block">BATCH SEAT</span>
+                <span class="font-bold" style="color: var(--accent-acid)">#389 / 500</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-dashed flex items-center justify-between" style="border-color: var(--border-color);">
+            <div class="text-[10px] font-mono theme-muted">
+              <div>Live Interview Access</div>
+              <div>SHA256: 7f2a...9b44</div>
+            </div>
+            <div class="w-12 h-12 bg-white p-1 rounded-lg border-2 border-black">
+              <svg viewBox="0 0 24 24" class="w-full h-full text-black fill-current">
+                <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14-2h4v4h-4v-4zm-4 0h2v2h-2v-2zm-2 2h2v2h-2v-2zm4 4h4v2h-4v-2zm-4 0h2v2h-2v-2zm-2-2h2v2h-2v-2zm6-2h2v2h-2v-2z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: VIRAL PLACEMENT GATE -->
+  <section id="referral-zone" class="py-12 px-6 max-w-5xl mx-auto">
+    <div class="neo-card p-6 sm:p-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b-2" style="border-color: var(--border-color);">
+        <div>
+          <span class="pill-tag uppercase">04 // PLACEMENT SURVIVAL REWARD GATE</span>
+          <h2 class="text-xl sm:text-2xl font-bold theme-title mt-2">Unlock Top 100 AI Placement Interview Questions</h2>
+          <p class="text-xs theme-muted mt-1">Unlock real technical questions asked at Google, Microsoft, Swiggy & Zerodha + 2026 Off-Campus Drive Tracker by inviting 3 unplaced friends.</p>
+        </div>
+        <div class="text-right">
+          <span class="text-xs font-mono theme-muted block">Top Placement Referrer</span>
+          <span class="text-xs font-mono font-bold" style="color: var(--accent-acid)">₹500 Amazon Gift Voucher</span>
+        </div>
+      </div>
+
+      <div class="mt-6 neo-card-inner p-5 space-y-2">
+        <div class="flex justify-between text-xs font-mono font-bold theme-title">
+          <span>Your Batch Referral Progress:</span>
+          <span style="color: var(--accent-acid)" id="refProgressText">1 / 3 Unplaced Peers Joined</span>
+        </div>
+        <div class="w-full h-3 rounded-full overflow-hidden border" style="background-color: var(--bg-card); border-color: var(--border-color);">
+          <div id="refProgressBar" class="h-full bg-emerald-400 w-[33%] transition-all duration-300"></div>
+        </div>
+      </div>
+
+      <!-- Share Link -->
+      <div class="mt-5 grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+        <div class="md:col-span-8 flex">
+          <input type="text" readonly id="myRefUrl" value="https://nxtwave.ai/ai60?ref=NW-CAREER849" class="neo-input w-full rounded-r-none px-4 py-2.5 text-xs font-mono select-all">
+          <button onclick="copyRefLink()" class="px-5 neo-card rounded-l-none text-xs font-mono font-bold theme-title hover:opacity-80 transition">
+            Copy
+          </button>
+        </div>
+
+        <div class="md:col-span-4 flex gap-2">
+          <button onclick="shareWhatsApp()" class="flex-1 bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold py-2.5 px-3 rounded-xl text-xs font-mono transition flex items-center justify-center gap-1.5 shadow">
+            Placement WhatsApp Group
+          </button>
+          <button onclick="simulatePeerJoin()" class="neo-card px-3 py-2.5 text-[11px] font-mono font-bold theme-title hover:opacity-80 transition" title="Test peer referral unlock">
+            ⚡ [Demo] Add
+          </button>
+        </div>
+      </div>
+
+      <!-- Unlocked Container -->
+      <div id="unlockedAsset" class="mt-5 p-5 rounded-xl neo-card-inner border-2 border-emerald-500/60 hidden">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🎉</span>
+          <div>
+            <h4 class="text-sm font-bold theme-title">PLACEMENT REWARD UNLOCKED: 2026 AI Career Kit</h4>
+            <p class="text-xs theme-muted">3 batchmates joined. Your downloads are ready:</p>
+          </div>
+        </div>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs font-mono">
+          <button onclick="playSuccessTone(); alert('Downloading Top-100-AI-Placement-Technical-Interview-Questions.pdf')" class="neo-btn px-4 py-2 rounded-lg">
+            📄 Top 100 AI Technical Interview Q&As (PDF) ↓
+          </button>
+          <button onclick="playSuccessTone(); alert('Opening 2026 Off-Campus Drive Tracker (.xlsx)')" class="neo-card px-4 py-2 rounded-lg theme-title font-bold">
+            📊 2026 Off-Campus Drive Tracker ↗
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t-2 text-center text-xs font-mono theme-muted" style="border-color: var(--border-color); background-color: var(--bg-card);">
+    <div class="max-w-4xl mx-auto px-6 space-y-2">
+      <div class="font-bold theme-title">NxtWave Growth Intern Challenge — Placement Strategy Edition</div>
+      <div>Engineered to acquire 500+ final-year engineering students for ₹2,000 on high-ROI campus placement channels.</div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT ENGINE -->
+  <script>
+    // 1. THEME TOGGLE
+    let isLightTheme = false;
+    function toggleTheme() {
+      isLightTheme = !isLightTheme;
+      document.body.classList.toggle('light-theme', isLightTheme);
+      document.getElementById('themeIcon').innerText = isLightTheme ? '🌙' : '☀️';
+      document.getElementById('themeLabel').innerText = isLightTheme ? 'Dark' : 'Light';
+      document.getElementById('navThemeIcon').innerText = isLightTheme ? '🌙' : '☀️';
+      playBeep(isLightTheme ? 560 : 440, 'sine', 0.08);
+    }
+
+    // 2. AUDIO SYNTHESIZER
+    let audioEnabled = true;
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      return audioCtx;
+    }
+    function toggleAudio() {
+      audioEnabled = !audioEnabled;
+      document.getElementById('soundLabel').innerText = audioEnabled ? 'Audio' : 'Muted';
+      document.getElementById('soundIcon').innerText = audioEnabled ? '🔊' : '🔇';
+    }
+    function playBeep(freq = 440, type = 'sine', duration = 0.08) {
+      if (!audioEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.1, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+      } catch (e) {}
+    }
+    function playSuccessTone() {
+      if (!audioEnabled) return;
+      playBeep(523, 'triangle', 0.1);
+      setTimeout(() => playBeep(659, 'triangle', 0.1), 100);
+      setTimeout(() => playBeep(784, 'triangle', 0.15), 200);
+    }
+
+    // 3. CONFETTI
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    let confettiPieces = [];
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function fireConfetti() {
+      const colors = ['#ccff00', '#00f0ff', '#ff0055', '#a855f7', '#2563eb'];
+      for (let i = 0; i < 65; i++) {
+        confettiPieces.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          r: Math.random() * 6 + 3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 16,
+          vy: (Math.random() - 0.7) * 16,
+          alpha: 1
+        });
+      }
+      playSuccessTone();
+    }
+    function renderConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < confettiPieces.length; i++) {
+        const p = confettiPieces[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.35;
+        p.alpha -= 0.015;
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.fillRect(p.x, p.y, p.r, p.r);
+      }
+      confettiPieces = confettiPieces.filter(p => p.alpha > 0);
+      requestAnimationFrame(renderConfetti);
+    }
+    renderConfetti();
+
+    // 4. VIBE MODE TOGGLE
+    let isPanicMode = true;
+    function toggleVibeMode() {
+      isPanicMode = !isPanicMode;
+      playBeep(360, 'square', 0.1);
+      const emoji = document.getElementById('vibeEmoji');
+      const text = document.getElementById('vibeText');
+      const headline = document.getElementById('heroHeadlineMain');
+      const sub = document.getElementById('heroSubtitle');
+
+      if (isPanicMode) {
+        emoji.innerText = "🚨";
+        text.innerText = "Mode: 0 Shortlists Panic";
+        headline.innerText = "From 0 Shortlists to Top 1% Candidate.";
+        sub.innerText = "Mass recruiters slashed hiring and off-campus portals discard resumes without AI keywords. In 60 minutes, build, deploy, and showcase an industry-grade AI application with quantifiable ATS bullet points that tech recruiters can't ignore.";
+      } else {
+        emoji.innerText = "😎";
+        text.innerText = "Mode: ₹18 LPA Placement Chad";
+        headline.innerText = "Crack ₹12 - ₹24 LPA Off-Campus Tech Drives.";
+        sub.innerText = "Walk into technical interviews with a live deployed GenAI application. Explain vector embeddings, latency bottlenecks, and API streaming while other freshers show stale todo apps.";
+      }
+    }
+
+    // 5. ATS ROLE MATCHER
+    const roleBlueprints = {
+      'ai-eng': {
+        title: "Enterprise RAG Multi-Document Q&A Assistant with Streaming API",
+        salary: "Target Package: ₹14 - ₹24 LPA (Product Startups)",
+        stack: "FastAPI + LangChain + Gemini Flash + ChromaDB Vector Store + Render Deploy",
+        resume: "Architected semantic search RAG engine processing 500+ PDFs with sub-250ms vector similarity lookup and zero-shot hallucination guardrails.",
+        interview: "How do you handle chunking overlap and token context window limits when scaling vector search to 50k documents?"
+      },
+      'fullstack-ai': {
+        title: "Full-Stack Autonomous Customer Support Agent with Function Calling",
+        salary: "Target Package: ₹10 - ₹18 LPA (High-Growth Tech)",
+        stack: "Next.js 14 + Node.js + Gemini Tool Calling API + PostgreSQL + Vercel",
+        resume: "Engineered automated support resolution agent executing SQL database queries autonomously, cutting response latency by 65%.",
+        interview: "Explain how function calling schema validation prevents prompt injection when generating database mutations."
+      },
+      'data-sci': {
+        title: "LLM Model Benchmark & Output Evaluation Pipeline",
+        salary: "Target Package: ₹10 - ₹20 LPA (AI GCCs & Consultancies)",
+        stack: "Python Pandas + Scikit-Learn + Ragas Evaluation Framework + Streamlit Dashboard",
+        resume: "Built automated LLM evaluation pipeline scoring semantic faithfulness and answer relevance across 1,000 synthetic test cases.",
+        interview: "What metric best evaluates RAG context recall when ground truth answer labels are uncurated?"
+      },
+      'backend-ai': {
+        title: "High-Throughput Asynchronous AI Task Queue & Webhook Dispatcher",
+        salary: "Target Package: ₹9 - ₹16 LPA (Backend Engineering)",
+        stack: "FastAPI + Celery / Redis + Gemini API + Docker Containerization",
+        resume: "Constructed asynchronous rate-limited LLM worker handling 120 concurrent inference requests with automatic exponential backoff.",
+        interview: "How do you prevent rate-limit 429 errors from upstream LLM providers during sudden enterprise traffic surges?"
+      }
+    };
+
+    function updatePlacementMatch() {
+      playBeep(480, 'sine', 0.08);
+      const role = document.getElementById('roleSelect').value;
+      const data = roleBlueprints[role];
+
+      document.getElementById('roleTitle').innerText = data.title;
+      document.getElementById('roleSalary').innerText = data.salary;
+      document.getElementById('roleStack').innerText = data.stack;
+      document.getElementById('roleResume').innerText = data.resume;
+      document.getElementById('roleInterview').innerText = data.interview;
+    }
+
+    // 6. SALARY & SHORTLIST CALCULATOR
+    function calcSalaryIndex() {
+      const s1 = parseInt(document.getElementById('sSlider1').value);
+      const s2 = parseInt(document.getElementById('sSlider2').value);
+      const s3 = parseInt(document.getElementById('sSlider3').value);
+
+      const l1 = ['', 'Basic CRUD / E-commerce clone', 'Generic Full-Stack app', 'Custom API integration', 'Deployed Modern AI Project'];
+      const l2 = ['', 'No live URL (GitHub repo only)', 'Localhost only (video demo)', 'Rough deployment on free tier', 'Live Cloud URL with Custom Domain'];
+      const l3 = ['', 'Zero practical experience', 'Watched tutorials / theory only', 'Basic OpenAI API prompt wrapper', 'Full RAG / Multimodal API with benchmarks'];
+
+      document.getElementById('sLabel1').innerText = l1[s1];
+      document.getElementById('sLabel2').innerText = l2[s2];
+      document.getElementById('sLabel3').innerText = l3[s3];
+
+      let score = (s1 * 8) + (s2 * 8) + (s3 * 9);
+      if (score > 98) score = 98;
+
+      const scoreVal = document.getElementById('sScoreVal');
+      const badge = document.getElementById('sBadge');
+      const salaryText = document.getElementById('sSalaryText');
+      const advice = document.getElementById('sAdvice');
+
+      scoreVal.innerText = score + '%';
+
+      if (score < 40) {
+        scoreVal.className = 'text-5xl font-black font-mono my-2 text-red-500';
+        badge.className = 'inline-block px-3 py-1 rounded-full text-xs font-mono font-bold my-1 bg-red-500/10 text-red-500 border border-red-500/20';
+        badge.innerText = '🚨 HIGH REJECTION RISK: ATS DISCARD';
+        salaryText.innerText = 'Est. Offer: ₹3.5 - ₹4.5 LPA (Mass Recruiter Tier)';
+        advice.innerText = 'Without deployed modern AI projects, your resume gets filtered out by automated screening software before a recruiter ever sees it.';
+      } else if (score < 75) {
+        scoreVal.className = 'text-5xl font-black font-mono my-2 text-amber-500';
+        badge.className = 'inline-block px-3 py-1 rounded-full text-xs font-mono font-bold my-1 bg-amber-500/10 text-amber-500 border border-amber-500/20';
+        badge.innerText = '⚠️ MODERATE SHORTLIST CHANCE';
+        salaryText.innerText = 'Est. Offer: ₹6.0 - ₹9.0 LPA (Mid-Tier Tech)';
+        advice.innerText = 'You may pass basic ATS screening, but without a working cloud URL and modern GenAI stack, you struggle in technical rounds.';
+      } else {
+        scoreVal.className = 'text-5xl font-black font-mono my-2 text-emerald-500';
+        badge.className = 'inline-block px-3 py-1 rounded-full text-xs font-mono font-bold my-1 bg-emerald-500/10 text-emerald-500 border border-emerald-500/20';
+        badge.innerText = '✅ TOP 1% PROFILE: DIRECT SHORTLIST';
+        salaryText.innerText = 'Est. Offer: ₹12.0 - ₹24.0 LPA (High-Growth Startups & GCCs)';
+        advice.innerText = 'Live URL + quantified ATS bullet points guarantees high interview callback rates and standout technical discussion.';
+      }
+    }
+
+    function boostSalary() {
+      document.getElementById('sSlider1').value = 4;
+      document.getElementById('sSlider2').value = 4;
+      document.getElementById('sSlider3').value = 4;
+      calcSalaryIndex();
+      fireConfetti();
+      document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 7. REGISTRATION
+    function handlePlacementReg(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value;
+      const college = document.getElementById('regCollege').value;
+      const id = 'NW-CAREER-' + Math.floor(10000 + Math.random() * 90000);
+
+      document.getElementById('passName').innerText = name;
+      document.getElementById('passCollege').innerText = college;
+      document.getElementById('passId').innerText = id;
+      document.getElementById('myRefUrl').value = `https://nxtwave.ai/ai60?ref=${id}`;
+
+      fireConfetti();
+      document.getElementById('passContainer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      alert(`🎉 Placement Fast-Track Pass Issued for ${name}!\n\nPass #${id} confirmed.\nWhatsApp confirmation link sent.\n\nInvite 3 classmates below to unlock the Top 100 Technical Interview Q&As!`);
+    }
+
+    // 8. VIRAL REWARD
+    let refFriends = 1;
+    function simulatePeerJoin() {
+      if (refFriends < 3) {
+        refFriends++;
+        document.getElementById('refProgressText').innerText = `${refFriends} / 3 Unplaced Peers Joined`;
+        document.getElementById('refProgressBar').style.width = `${refFriends * 33.3}%`;
+        playSuccessTone();
+
+        if (refFriends === 3) {
+          document.getElementById('unlockedAsset').classList.remove('hidden');
+          fireConfetti();
+          alert('🎉 3/3 Reached! The Top 100 AI Placement Technical Interview Q&As & Off-Campus Drive Tracker are unlocked below.');
+        }
+      } else {
+        alert('Already unlocked! Download your placement materials above.');
+      }
+    }
+
+    function copyRefLink() {
+      const el = document.getElementById('myRefUrl');
+      el.select();
+      navigator.clipboard.writeText(el.value);
+      alert('Referral link copied to clipboard!');
+    }
+
+    function shareWhatsApp() {
+      const url = document.getElementById('myRefUrl').value;
+      const msg = encodeURIComponent(`Hey! Are you guys applying for off-campus tech drives? Mass recruiters are filtering resumes without AI experience. NxtWave is hosting a free 60-min live lab where we deploy a working AI app on a live URL + get top 100 interview Q&As. Only 500 final year seats: ${url}`);
+      window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
+    }
+  </script>
+</body>
+</html>
+
