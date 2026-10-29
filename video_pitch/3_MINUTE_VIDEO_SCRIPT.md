@@ -1,88 +1,102 @@
-# 3-Minute Video Walkthrough Script
-## NxtWave Growth Intern Challenge — Placement & Growth Campaign
+# 3-Minute Video Pitch Script
+## Tailored for: `From-0-Shortlists-to-a-Top-1percent-Candidate.pptx`
+**Role:** NxtWave Growth Intern Challenge  
 **Target Video Duration:** Exactly 3 Minutes (180 Seconds)  
-**Tools to Record:** [Loom](https://www.loom.com/) (Recommended) / OBS / Zoom screen recording with webcam in corner.
+**Tools to Record:** [Loom](https://www.loom.com/) (Recommended) / OBS / Zoom with webcam in corner.
 
 ---
 
-## ⏱️ Video Cue Sheet & Timestamp Breakdown
+## ⏱️ Slide-by-Slide Cue Sheet & Timestamp Breakdown
 
-| Timestamp | Visual on Screen | Spoken Focus |
-| :--- | :--- | :--- |
-| **0:00 - 0:35** | Facecam + Slide 1 of `SLIDES_PLACEMENT.html` | Problem statement: The 2026 IT hiring freeze & why ₹2,000 paid ads fail |
-| **0:35 - 1:15** | Slide 2 & 3 (Funnel & Channel Math) | The 3 Prioritized Channels: SPC Bounties, Viral Gate, Off-Campus Groups |
-| **1:15 - 2:15** | Screen Share of `working_asset/index.html` | Live Prototype Demo: ATS Matcher, Salary Calculator, Admit Pass, Referral Gate |
-| **2:15 - 2:45** | Slide 5 (AI Learning Notes & Judgment) | Critical Judgment: What AI suggested that I deliberately rejected & why |
-| **2:45 - 3:00** | Facecam (Full Screen) | Closing statement: Bias to ship, extreme ownership, ready for NxtWave |
+| Timestamp | Visual on Screen | Slide in PPTX | Spoken Core Focus |
+| :--- | :--- | :--- | :--- |
+| **0:00 - 0:30** | Facecam + PPT Slide 1 | **Slide 1: From 0 Shortlists to a Top 1% Candidate** | Context, 2026 hiring freeze, ₹2,000 budget constraint, and core workshop positioning. |
+| **0:30 - 1:05** | Facecam + PPT Slide 2 | **Slide 2: Budget Allocation (Peer Networks vs. Ads)** | Channel breakdown: ₹1,200 SPCs (280 regs), ₹500 Referral Gate (160 regs), ₹300 Communities (90 regs) = ₹3.77 CAC. |
+| **1:05 - 1:40** | Facecam + PPT Slide 3 | **Slide 3: The 7-Day Engine** | 7-day compounding waterfall: D-7 to D-1 execution sequence turning 5,000 impressions into 530 signups. |
+| **1:40 - 2:20** | PPT Slide 4 / Live Demo | **Slide 4: The Working Asset** | Walkthrough of the 5-part tool: Role & Salary Matcher, Probability Estimator, Admit Pass, Referral Gate, Theme toggle. |
+| **2:20 - 2:45** | Facecam + PPT Slide 5 | **Slide 5: Attendance System & Deliberate Rejections** | Push live attendance >65% via 3 WhatsApp touches + 3 AI ideas deliberately rejected. |
+| **2:45 - 3:00** | Full Facecam | **Final Closing** | Bias to ship, extreme ownership, data-driven execution ready for NxtWave. |
 
 ---
 
 ## 🎙️ Spoken Word-for-Word Script (180 Seconds)
 
-### [0:00 - 0:35] Part 1: The Context & The ₹2,000 Reality Check
-*(Visual: Webcam active in corner, presenting Slide 1 of the Placement deck)*
+### [0:00 - 0:30] Slide 1: From 0 Shortlists to a Top 1% Candidate
+*(Visual: Full screen on Slide 1 of `From-0-Shortlists-to-a-Top-1percent-Candidate.pptx`, small webcam circle in bottom-right corner.)*
 
-> "Hi everyone, I’m excited to walk you through my 7-day growth plan to get **500 engineering students registered** for NxtWave's free workshop: *'Build Your First AI Project in 60 Minutes'*, on a strict **₹2,000 budget**.
+> **"Hi everyone, I’m excited to present my 7-day growth strategy to bring over 500 engineering students into NxtWave’s live workshop on a strict ₹2,000 budget.**
 > 
-> In 2026, engineering students—especially in Tier-2 and Tier-3 colleges—are facing an unprecedented IT hiring winter. Mass recruiters cut fresher hiring by 50%, and automated ATS software discards resumes lacking practical GenAI keywords.
+> In 2026, engineering students in Tier-2 and Tier-3 colleges are facing a brutal IT placement freeze. Mass recruiters cut fresher intake in half, and automated ATS filters discard resumes lacking practical GenAI keywords.
 > 
-> With only ₹2,000, running paid Instagram or LinkedIn ads is mathematically impossible—at ₹40 CPC, you get barely 15 clicks. So instead of burning money on ads, I took full ownership of the constraint and engineered a peer-incentivized, product-led growth engine."
+> With only ₹2,000, paid ads are a non-starter—at ₹40 per click, that budget evaporates in 50 clicks. Instead, we positioned the workshop around an urgent, high-stakes promise: *'Deploy a live industry AI project on your resume in 60 minutes, with interview preparation for ₹8L to ₹24L roles.'* Here is how we acquire 530 students profitably."
 
 ---
 
-### [0:35 - 1:15] Part 2: The 3 Prioritized Channels & Funnel Math
-*(Visual: Switch to Slide 2 & 3 showing the Waterfall Funnel and Channel Breakdown)*
+### [0:30 - 1:05] Slide 2: Budget Allocation — Peer Networks Over Paid Ads
+*(Visual: Transition to Slide 2. Point cursor to the 3 channels and the ₹3.77 CAC metric.)*
 
-> "I prioritized 3 high-velocity channels and allocated 100% of the ₹2,000 budget directly into student hands:
+> **"Slide 2 outlines our budget allocation. We put 100% of the ₹2,000 directly behind peer networks rather than ad platforms:**
 > 
-> 1. **First, Student Placement Coordinator (SPC) Micro-Bounties:** I allocated ₹1,200 to recruit 8 active college SPCs and Training & Placement student reps, offering a ₹150 UPI bounty when 35 verified batchmates register. A broadcast in an official college placement WhatsApp group carries a 98% open rate and accounts for **280 registrations**.
-> 2. **Second, The 'Placement Survival Kit' Viral Referral Gate:** I allocated ₹500 for a top-referrer prize pool. Students unlock our exclusive *Top 100 AI Placement Technical Interview Q&As* and *2026 Off-Campus Drive Tracker* by inviting 3 classmates on WhatsApp. With a viral K-factor of 0.57, this compounds into **160 viral registrations**.
-> 3. **Third, Off-Campus Drive & Coding Prep Communities:** With ₹300 for branded salary benchmark graphics, we partner with 6 regional Telegram fresher hiring channels for **90 registrations**.
+> 1. **Student Placement Coordinators (₹1,200):** We recruit 8 active college placement reps across target campuses, offering a ₹150 UPI bounty once 35 batchmates register through their batch link. An official placement group broadcast carries a 98% open rate, driving **280 verified registrations**.
+> 2. **Placement Survival Kit Referral Gate (₹500):** We gamify peer distribution. Students unlock our curated *Top 100 Technical AI Interview Q&As* and *2026 Off-Campus Drive Tracker* by inviting 3 classmates on WhatsApp, driving **160 viral registrations**.
+> 3. **Off-Campus Tech Communities (₹300):** Partnering with 6 regional Telegram channels sharing fresher salary benchmarks for **90 registrations**.
 > 
-> That totals **530 verified registrations at an effective CAC of just ₹3.77 per student**."
+> That delivers **530 registrations at a blended CAC of just ₹3.77**."
 
 ---
 
-### [1:15 - 2:15] Part 3: Live Walkthrough of the Built Working Asset
-*(Visual: Seamlessly switch screen share to `/placement_growth_campaign/working_asset/index.html` and click live)*
+### [1:05 - 1:40] Slide 3: The 7-Day Engine — Compounding 530 Candidates
+*(Visual: Transition to Slide 3. Point cursor to the D-7 to D-1 timeline.)*
 
-> "The challenge stated that *'everyone might build a simple landing page, but the more complex and effective you build, the more brownie points you get.'*
+> **"Slide 3 shows the 7-day operational engine that turns 5,000 impressions into 530 confirmed candidates:**
 > 
-> So I built a full-stack interactive **Placement & Portfolio Growth Application**:
+> - **Days 7 to 6:** We onboard 8 placement reps, seed the interactive asset, and secure an initial base of 120 registrations.
+> - **Days 5 to 3:** We activate the referral loop, launch regional Telegram drops, and trigger a scarcity broadcast—*'110 seats remaining'*—pushing the total to 425.
+> - **Days 2 to 1:** We run a ₹500 voucher leaderboard for top referrers, issue digital admit passes, and close at 530+ confirmed students.
 > 
-> 1. **First, The ATS Resume & Salary Matcher:** *(Click role dropdown to AI Engineer / ₹12-24 LPA, watch card update)*  
-> Students pick their target role and salary bracket, and the tool immediately generates an approved 60-min architecture, quantifiable ATS resume bullet points, and real interview system design questions before they even register.
-> 
-> 2. **Second, The Placement Shortlist & Salary Estimator:** *(Move sliders and click 'Boost to ₹18 LPA Profile')*  
-> It gives students an interactive reality check—showing how having zero AI projects drops ATS callback chances to 18%, and watching it jump to 98% with celebratory confetti when they commit to the 60-min sprint.
-> 
-> 3. **Third, Instant Placement Fast-Track Pass:** *(Enter name, click confirm)*  
-> It generates an instant digital admit card with candidate ID and QR code, establishing immediate psychological commitment.
-> 
-> 4. **Fourth, The Gamified Viral Gate:** *(Click '⚡ Demo Add' twice)*  
-> It tracks peer referrals live (`1/3`, `2/3`, `3/3`). Once 3 peers join, it instantly unlocks the download links for the *Top 100 Technical Interview Q&As* and the *Off-Campus Drive Tracker*.
-> 
-> 5. **Finally, Seamless Light & Dark Theme:** *(Toggle the theme button in navbar)*  
-> Engineered with CSS variables to ensure 100% contrast, dark typography on white paper cards, and zero legibility bugs."
+> Organic peer referrals multiply our 370 direct signups into 530 candidates, setting up 360 live attendees."
 
 ---
 
-### [2:15 - 2:45] Part 4: Critical Judgment & Deliberate AI Rejections
-*(Visual: Switch to Slide 5 of the presentation deck)*
+### [1:40 - 2:20] Slide 4: The Working Asset — Make the Asset Do the Selling
+*(Visual: Present Slide 4, or toggle to your browser tab showing `index.html` on screen.)*
 
-> "A key quality of a strong growth operator is judgment—knowing what **not** to do, even when AI suggests it.
+> **"Slide 4 highlights the core differentiator: our interactive working asset.**
 > 
-> While planning this campaign, AI suggested:
-> 1. Spending ₹1,500 on Instagram and LinkedIn Ads. I **deliberately rejected** this because CAC would be ₹50+, delivering barely 25 registrations instead of 500.
-> 2. Pitching the workshop with a generic title like 'Learn Prompt Engineering & AI Basics'. I **rejected** this because tech freshers view prompt engineering as non-technical; framing it around *'Deploying a Live AI Capstone to Beat the Hiring Freeze'* drives high conversion.
-> 3. Cold emailing college professors. I **rejected** this because university bureaucracy takes 3 weeks, whereas peer placement reps broadcast in 10 minutes."
+> Instead of a boring, static Google Form, I built a 5-part web application that delivers value before asking for registration:
+> 
+> 1. **Role & Salary Matcher:** Students select target roles from ₹8L to ₹24L LPA and instantly see tailored AI architectures and ATS resume bullet points.
+> 2. **Shortlist Probability Estimator:** An interactive gauge showing how a live AI capstone jumps ATS callback chances from 18% to 98%.
+> 3. **Digital Admit Pass:** Generates a personalized candidate pass with seat number, QR code, and 1-tap Google Calendar sync.
+> 4. **Referral Gate:** Tracks peer invites in real-time (`1/3 → 2/3 → 3/3`) to unlock the interview kit.
+> 5. **Light & Dark Theme:** Built with custom CSS tokens to ensure 100% legibility on any mobile or desktop device."
 
 ---
 
-### [2:45 - 3:00] Part 5: Bias to Ship & Ready for NxtWave
-*(Visual: Full facecam, high energy and confident closing)*
+### [2:20 - 2:45] Slide 5: Attendance System & Deliberate AI Rejections
+*(Visual: Transition to Slide 5. Highlight the 3 touches and the Deliberate Rejections box.)*
 
-> "In under 48 hours, I didn't just write a strategy deck—I mathematically modeled the funnel, coded a live interactive product, and engineered both user acquisition and a >65% attendance rate.
+> **"Registrations mean nothing without show-ups. On Slide 5, we engineer live attendance past 65% through 3 WhatsApp touchpoints:**
+> - Immediate calendar sync and admit pass.
+> - At D-1, a 30-second micro-task to create a free Google AI Studio API key, generating psychological commitment.
+> - At T-minus 45 minutes, a doors-open alert with an exclusive hiring directory drop.
 > 
-> This demonstrates my **Bias to Ship, extreme Ownership, and data-driven growth mindset**. I am eager to bring this exact execution to the Growth team at NxtWave. Thank you, and I look forward to the final Growth interview!"
+> Crucially, when AI suggested spending ₹1,500 on meta ads, cold-emailing HODs, or calling the workshop 'Prompt Engineering Basics', **I deliberately rejected all three**. Ads would yield only 25 leads, HOD approval takes weeks, and tech freshers want hands-on engineering, not prompt basics."
 
+---
+
+### [2:45 - 3:00] Closing: Bias to Ship & Extreme Ownership
+*(Visual: Switch to full-screen webcam, maintain strong eye contact, high energy.)*
+
+> **"In under 48 hours, I didn't just design a presentation—I modeled unit economics, built a functional product, and architected an end-to-end acquisition engine.**
+> 
+> This reflects my **Bias to Ship, extreme Ownership, and analytical rigor**. I’m eager to bring this exact drive to the Growth team at NxtWave. Thank you!"
+
+---
+
+## 💡 Quick Tips for High-Score Recording:
+1. **Resolution:** 1080p, good lighting on your face.
+2. **Audio:** Use earphones or a dedicated mic to eliminate echo.
+3. **Pacing:** Practice once with a stopwatch; 180 seconds feels brisk, so speak with clear energy.
+4. **Links in Description:** When submitting your video URL, include the link to your live GitHub Pages asset:  
+   `https://akash-7360.github.io/NxtWave/`
